@@ -7,7 +7,7 @@ class ValidationsController < ApplicationController
    @social_security_number = params[:social_security_number]
 
     # Call Rust-backend
-    result = RustValidatorService.validate(@social_security_number)
+    result = ValidationsService.validate(@social_security_number)
 
     respond_to do |format|
       format.html do
