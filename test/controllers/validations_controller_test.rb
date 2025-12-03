@@ -2,12 +2,12 @@ require "test_helper"
 
 class ValidationsControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get validations_new_url
+    get new_validation_path
     assert_response :success
   end
 
-  test "should get create" do
-    get validations_create_url
+  test "should post create" do
+    post validations_path, params: { social_security_number: "200001011234" }
     assert_response :success
   end
 end
