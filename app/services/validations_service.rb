@@ -1,4 +1,4 @@
-class ValidatorsService
+class ValidationsService
   include HTTParty
   base_uri "http://localhost:3030"
 
