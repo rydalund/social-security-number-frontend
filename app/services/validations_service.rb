@@ -1,6 +1,8 @@
 class ValidationsService
   include HTTParty
-  base_uri "http://localhost:3030"
+
+  # Change the base_uri to point to your Rust-backend server
+  base_uri "http://10.0.1.4:3030"
 
   def self.validate(social_security_number)
     response = post("/api/validate",
