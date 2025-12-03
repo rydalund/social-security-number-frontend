@@ -3,9 +3,9 @@ class ValidatorsService
   base_uri 'http://localhost:3030'
 
   def self.validate(social_security_number)
-    response = post('/api/validate', 
+    response = post("/api/validate",
       body: { social_security_number: social_security_number }.to_json,
-      headers: { 'Content-Type' => 'application/json' }
+      headers: { "Content-Type" => "application/json" }
     )
 
     if response.success?
