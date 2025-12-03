@@ -1,6 +1,6 @@
 class ValidatorsService
   include HTTParty
-  base_uri 'http://localhost:3030'
+  base_uri "http://localhost:3030"
 
   def self.validate(social_security_number)
     response = post("/api/validate",
