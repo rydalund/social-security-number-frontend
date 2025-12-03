@@ -4,17 +4,21 @@ class ValidationsController < ApplicationController
   end
 
   def create
-   @social_security_number = params[:social_security_number]
+    social_security_number = params[:social_security_number].to_s.strip
 
-    # Call Rust-backend
-    result = ValidationsService.validate(@social_security_number)
-
-    respond_to do |format|
-      format.html do
-        @result = result
-        render :new
-      end
-      format.json { render json: result }
+    if social_security_number.empty?
+      flash[:alert] = "Please enter a social security number"
+      redirect_to root_path and return
     end
+
+    result = ValidationsService.validate(social_security_number)
+
+    if result["valid"]
+      flash[:success] = "Valid: #{result['formatted']}#{result['is_coordination_number'] ? ' (Coordination Number)' : ''}"
+    else
+      flash[:error] = "Invalid: #{result['error']}"
+    end
+
+    redirect_to new_validation_path
   end
 end
