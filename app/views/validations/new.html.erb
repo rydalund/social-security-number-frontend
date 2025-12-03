@@ -5,7 +5,7 @@
         Social Security Number Validator
       </h1>
       
-      <%= form_with(url: validations_path, method: :post, class: "space-y-6") do |f| %>
+     <%= form_with(url: validations_path, method: :post, class: "space-y-6", data: { turbo: false }) do |f| %>
         <div>
           <label for="social_security_number" class="block text-sm font-medium text-gray-700 mb-2">
             Enter 12-digit Social Security Number
